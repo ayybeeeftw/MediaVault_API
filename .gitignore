@@ -1,0 +1,32 @@
+# Ignore Visual Studio temporary files, build results, and user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# ASP.NET logs
+*.log
+
+# Secrets (only if applicable, like secrets.json)
+secrets.json
+
+# dotenv config (optional)
+.env
+
+# Publish output
+out/
+publish/
+
+# Recycle bin of some IDEs
+*.swp

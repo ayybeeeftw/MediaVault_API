@@ -1,0 +1,61 @@
+# 📁 Project: MediaVault_API
+# 🧱 Clean Structure for GitHub Push (Essential Only)
+
+📁 MediaVault.API/
+│   ├── 📁 Controllers/
+│   │   ├── ShowsController.cs
+│   │   ├── EpisodesController.cs
+│   │   ├── ActorsController.cs
+│   │   └── GenresController.cs
+│   ├── 📁 Database/
+│   │   ├── Create_MediaVaultDb.sql
+│   │   └── MediaVaultDb.bak (optional if not private)
+│   ├── appsettings.json
+│   ├── Program.cs
+│   └── MediaVault.API.csproj
+
+📁 MediaVault.Models/
+│   ├── 📁 DTOs/
+│   │   ├── 📁 Shows/
+│   │   ├── 📁 Episodes/
+│   │   ├── 📁 Actors/
+│   │   └── 📁 Genres/
+│   ├── 📁 Entities/
+│   │   ├── Show.cs
+│   │   ├── Episode.cs
+│   │   ├── Actor.cs
+│   │   ├── Genre.cs
+│   │   └── ShowActor.cs
+│   ├── ApiResponse.cs
+│   └── MediaVault.Models.csproj
+
+📁 MediaVault.Repositories/
+│   ├── 📁 Interfaces/
+│   │   ├── IShowRepository.cs
+│   │   ├── IEpisodeRepository.cs
+│   │   ├── IActorRepository.cs
+│   │   └── IGenreRepository.cs
+│   ├── ShowRepository.cs
+│   ├── EpisodeRepository.cs
+│   ├── ActorRepository.cs
+│   ├── GenreRepository.cs
+│   ├── 📁 Data/
+│   │   └── AppDbContext.cs
+│   └── MediaVault.Repositories.csproj
+
+📁 MediaVault.Services/
+│   ├── 📁 Interfaces/
+│   │   ├── IShowService.cs
+│   │   ├── IEpisodeService.cs
+│   │   ├── IActorService.cs
+│   │   └── IGenreService.cs
+│   ├── ShowService.cs
+│   ├── EpisodeService.cs
+│   ├── ActorService.cs
+│   ├── GenreService.cs
+│   └── MediaVault.Services.csproj
+
+📄 MediaVault_API.sln
+📄 README.md
+📄 PROJECT_STRUCTURE.txt
+📄 .gitignore
