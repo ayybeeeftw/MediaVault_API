@@ -13,10 +13,8 @@
   - Actors
 - ✅ **Soft Delete** support (logical deletion)
 - ✅ **Model Binding**:
-  - `FromRoute`
   - `FromQuery`
   - `FromBody`
-  - `FromForm`
 - ✅ **Standardized API Responses** via `ApiResponse<T>` wrapper
 - ✅ Fully testable via **Swagger UI** and **Postman**
 
