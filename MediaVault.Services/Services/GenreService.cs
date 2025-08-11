@@ -1,4 +1,5 @@
 ﻿using MediaVault.Models.DTOs.Genres;
+using MediaVault.Models.DTOs.Shows;
 using MediaVault.Models.Entities;
 using MediaVault.Repositories.Interfaces;
 using MediaVault.Services.Interfaces;
@@ -83,6 +84,14 @@ namespace MediaVault.Services
             genre.IsDeleted = true;
             _repository.Update(genre);
             return await Task.FromResult(true);
+        }
+
+        public async Task<IEnumerable<ShowDto>?> GetShowsByGenreIdAsync(int id)
+        {
+            if (!_repository.Exists(id)) return await Task.FromResult<IEnumerable<ShowDto>?>(null);
+
+            var shows = await _repository.GetShowsByGenreIdAsync(id);
+            return shows;
         }
     }
 }
