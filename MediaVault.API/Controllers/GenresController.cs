@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediaVault.Models;
 using MediaVault.Models.DTOs.Genres;
+using MediaVault.Models.DTOs.Shows;
 using MediaVault.Services.Interfaces;
 
 namespace MediaVault.Controllers
@@ -25,6 +26,26 @@ namespace MediaVault.Controllers
                 Status = "success",
                 Message = "All genres retrieved.",
                 Data = genres
+            });
+        }
+
+        [HttpGet("{id}/shows")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<ShowDto>>>> GetShowsByGenre(int id)
+        {
+            var shows = await _genreService.GetShowsByGenreIdAsync(id);
+            if (shows == null)
+                return NotFound(new ApiResponse<IEnumerable<ShowDto>>
+                {
+                    Status = "fail",
+                    Message = $"No genre found with ID = {id}",
+                    Error = "Genre not found"
+                });
+
+            return Ok(new ApiResponse<IEnumerable<ShowDto>>
+            {
+                Status = "success",
+                Message = "Shows for genre retrieved.",
+                Data = shows
             });
         }
 

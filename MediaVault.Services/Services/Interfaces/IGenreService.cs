@@ -1,4 +1,5 @@
 ﻿using MediaVault.Models.DTOs.Genres;
+using MediaVault.Models.DTOs.Shows;
 
 namespace MediaVault.Services.Interfaces
 {
@@ -9,5 +10,6 @@ namespace MediaVault.Services.Interfaces
         Task<GenreDto> CreateAsync(CreateGenreDto dto);
         Task<bool> UpdateAsync(int id, UpdateGenreDto dto);
         Task<bool> DeleteAsync(int id);
+        Task<IEnumerable<ShowDto>?> GetShowsByGenreIdAsync(int id);
     }
 }

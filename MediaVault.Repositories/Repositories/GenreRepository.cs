@@ -1,6 +1,11 @@
-﻿using MediaVault.Repositories.Data;
+﻿using Dapper;
+using MediaVault.Repositories.Data;
 using MediaVault.Models.Entities;
 using MediaVault.Repositories.Interfaces;
+using MediaVault.Models.DTOs.Shows;
+using System.Data;
+using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace MediaVault.Repositories
 {
@@ -50,6 +55,23 @@ namespace MediaVault.Repositories
         public bool Exists(int id)
         {
             return _context.Genres.Any(g => g.Id == id);
+        }
+
+        public async Task<IEnumerable<ShowDto>> GetShowsByGenreIdAsync(int genreId)
+        {
+            var sql = @"SELECT s.Id, s.Title, s.GenreId, g.Name AS GenreName, s.Seasons, s.Type,
+                               s.IsCompleted, s.Language, s.Country, s.Summary, s.ReleaseDate, s.Rating
+                        FROM Shows s
+                        INNER JOIN Genres g ON s.GenreId = g.Id
+                        WHERE s.GenreId = @GenreId AND s.IsDeleted = 0 AND g.IsDeleted = 0
+                        ORDER BY s.Rating DESC";
+
+            using var connection = _context.Database.GetDbConnection();
+            if (connection.State != ConnectionState.Open)
+                await connection.OpenAsync();
+
+            var shows = await connection.QueryAsync<ShowDto>(sql, new { GenreId = genreId });
+            return shows ?? Array.Empty<ShowDto>();
         }
     }
 }
