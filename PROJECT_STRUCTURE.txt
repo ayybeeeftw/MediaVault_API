@@ -15,44 +15,48 @@
 │   └── MediaVault.API.csproj
 
 📁 MediaVault.Models/
-│   ├── 📁 DTOs/
-│   │   ├── 📁 Shows/
-│   │   ├── 📁 Episodes/
-│   │   ├── 📁 Actors/
-│   │   └── 📁 Genres/
-│   ├── 📁 Entities/
-│   │   ├── Show.cs
-│   │   ├── Episode.cs
-│   │   ├── Actor.cs
-│   │   ├── Genre.cs
-│   │   └── ShowActor.cs
+│   ├── 📁 Models/
+│   │   ├── 📁 DTOs/
+│   │   │   ├── 📁 Shows/
+│   │   │   ├── 📁 Episodes/
+│   │   │   ├── 📁 Actors/
+│   │   │   └── 📁 Genres/
+│   │   ├── 📁 Entities/
+│   │   │   ├── Show.cs
+│   │   │   ├── Episode.cs
+│   │   │   ├── Actor.cs
+│   │   │   ├── Genre.cs
+│   │   │   └── ShowActor.cs
 │   ├── ApiResponse.cs
 │   └── MediaVault.Models.csproj
 
 📁 MediaVault.Repositories/
-│   ├── 📁 Interfaces/
-│   │   ├── IShowRepository.cs
-│   │   ├── IEpisodeRepository.cs
-│   │   ├── IActorRepository.cs
-│   │   └── IGenreRepository.cs
-│   ├── ShowRepository.cs
-│   ├── EpisodeRepository.cs
-│   ├── ActorRepository.cs
-│   ├── GenreRepository.cs
-│   ├── 📁 Data/
+│   ├── 📁 Repositories
+│   │   ├── 📁 Interfaces
+│   │   │   ├── IShowRepository.cs
+│   │   │   ├── IEpisodeRepository.cs
+│   │   │   ├── IActorRepository.cs
+│   │   │   └── IGenreRepository.cs
+│   │   ├── ShowRepository.cs
+│   │   ├── EpisodeRepository.cs
+│   │   ├── ActorRepository.cs
+│   │   └── GenreRepository.cs
+│   ├── 📁 Data
 │   │   └── AppDbContext.cs
+|   ├── 📁 Migrations
 │   └── MediaVault.Repositories.csproj
 
 📁 MediaVault.Services/
-│   ├── 📁 Interfaces/
-│   │   ├── IShowService.cs
-│   │   ├── IEpisodeService.cs
-│   │   ├── IActorService.cs
-│   │   └── IGenreService.cs
-│   ├── ShowService.cs
-│   ├── EpisodeService.cs
-│   ├── ActorService.cs
-│   ├── GenreService.cs
+|   ├── 📁 Repositories
+│   │   ├── 📁 Interfaces/
+│   │   │   ├── IShowService.cs
+│   │   │   ├── IEpisodeService.cs
+│   │   │   ├── IActorService.cs
+│   │   │   └── IGenreService.cs
+│   │   ├── ShowService.cs
+│   │   ├── EpisodeService.cs
+│   │   ├── ActorService.cs
+│   │   └── GenreService.cs
 │   └── MediaVault.Services.csproj
 
 📄 MediaVault_API.sln

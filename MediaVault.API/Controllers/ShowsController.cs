@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediaVault.Models;
+﻿using MediaVault.Models;
 using MediaVault.Models.DTOs.Shows;
+using MediaVault.Models.Models.DTOs.Dapper;
+using MediaVault.Models.Models.DTOs.Shows;
+using MediaVault.Services.Dapper;
 using MediaVault.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
-namespace MediaVault.Controllers
+namespace MediaVault.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -11,9 +14,12 @@ namespace MediaVault.Controllers
     {
         private readonly IShowService _showService;
 
-        public ShowsController(IShowService showService)
+        private readonly DapperShowService _dapperShowService;
+
+        public ShowsController(IShowService showService, DapperShowService dapperService)
         {
             _showService = showService;
+            _dapperShowService = dapperService;
         }
 
         // GET: api/shows
@@ -66,5 +72,29 @@ namespace MediaVault.Controllers
                 ? Ok(ApiResponse<string>.Success("Show soft-deleted."))
                 : NotFound(ApiResponse<string>.Fail("Show not found."));
         }
+
+        // GET: api/shows/search
+        [HttpGet("search")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<ShowSearchDto>>>> SearchShows([FromQuery] SearchShowDto dto)
+        {
+            var results = await _dapperShowService.SearchShowsAsync(dto.Title, dto.GenreId, dto.IsCompleted);
+            return Ok(ApiResponse<IEnumerable<ShowSearchDto>>.Success(results, "Filtered shows fetched."));
+        }
+
+        [HttpGet("popular")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<ShowWithEpisodeCountDto>>>> GetPopularShows()
+        {
+            var shows = await _dapperShowService.GetShowsWithEpisodeCountsAsync();
+            return Ok(ApiResponse<IEnumerable<ShowWithEpisodeCountDto>>.Success(shows, "Shows with episode counts fetched."));
+        }
+
+        [HttpGet("/api/dashboard/summary")]
+        public async Task<ActionResult<ApiResponse<DashboardSummaryDto>>> GetDashboardSummary(
+        [FromServices] DapperDashboardService dashboardService)
+        {
+            var summary = await dashboardService.GetDashboardSummaryAsync();
+            return Ok(ApiResponse<DashboardSummaryDto>.Success(summary, "Dashboard summary fetched."));
+        }
+
     }
 }

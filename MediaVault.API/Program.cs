@@ -1,15 +1,16 @@
-using MediaVault.Repositories.Data;
-using Microsoft.EntityFrameworkCore;
-
 // Repositories
 using MediaVault.Repositories;
+using MediaVault.Repositories.Data;
 using MediaVault.Repositories.Interfaces;
-
 // Services
 using MediaVault.Services;
+using MediaVault.Services.Dapper;
 using MediaVault.Services.Interfaces;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 
-namespace TestProject_API
+namespace MediaVault.API
 {
     public class Program
     {
@@ -25,6 +26,9 @@ namespace TestProject_API
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddScoped<IDbConnection>(sp =>
+                new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             // Repositories
             builder.Services.AddScoped<IShowRepository, ShowRepository>();
             builder.Services.AddScoped<IEpisodeRepository, EpisodeRepository>();
@@ -36,6 +40,8 @@ namespace TestProject_API
             builder.Services.AddScoped<IEpisodeService, EpisodeService>();
             builder.Services.AddScoped<IActorService, ActorService>();
             builder.Services.AddScoped<IGenreService, GenreService>();
+            builder.Services.AddScoped<DapperShowService>();
+            builder.Services.AddScoped<DapperDashboardService>();
 
             // Controllers
             builder.Services.AddControllers();

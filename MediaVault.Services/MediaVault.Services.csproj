@@ -11,4 +11,9 @@
     <ProjectReference Include="..\MediaVault.Repositories\MediaVault.Repositories.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Dapper.SqlBuilder" Version="2.1.66" />
+  </ItemGroup>
+
 </Project>
