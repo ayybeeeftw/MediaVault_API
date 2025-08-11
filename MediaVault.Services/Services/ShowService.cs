@@ -76,13 +76,15 @@ public class ShowService : IShowService
         };
 
         _repository.Add(show);
+        // Reload the show with its related Genre to populate the response
+        var savedShow = _repository.GetById(show.Id);
 
         var result = new ShowDto
         {
             Id = show.Id,
             Title = show.Title,
             GenreId = show.GenreId,
-            GenreName = show.Genre?.Name ?? "",
+            GenreName = savedShow?.Genre.Name ?? string.Empty,
             Seasons = show.Seasons,
             Type = show.Type,
             IsCompleted = show.IsCompleted,
