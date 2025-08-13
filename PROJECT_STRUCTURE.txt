@@ -1,65 +1,108 @@
 # 📁 Project: MediaVault_API
-# 🧱 Clean Structure for GitHub Push (Essential Only)
+# 🧱 Updated File Structure
 
 📁 MediaVault.API/
 │   ├── 📁 Controllers/
-│   │   ├── ShowsController.cs
-│   │   ├── EpisodesController.cs
 │   │   ├── ActorsController.cs
-│   │   └── GenresController.cs
+│   │   ├── EpisodesController.cs
+│   │   ├── GenresController.cs
+│   │   └── ShowsController.cs
 │   ├── 📁 Database/
 │   │   ├── Create_MediaVaultDb.sql
-│   │   └── MediaVaultDb.bak (optional if not private)
+│   │   └── MediaVaultDb.bak
+│   ├── 📁 Properties/
+│   │   └── launchSettings.json
+│   ├── appsettings.Development.json
 │   ├── appsettings.json
+│   ├── MediaVault.API.csproj
 │   ├── Program.cs
-│   └── MediaVault.API.csproj
+│   └── TestProject_API.http
 
 📁 MediaVault.Models/
 │   ├── 📁 Models/
 │   │   ├── 📁 DTOs/
-│   │   │   ├── 📁 Shows/
-│   │   │   ├── 📁 Episodes/
 │   │   │   ├── 📁 Actors/
-│   │   │   └── 📁 Genres/
+│   │   │   │   ├── ActorDto.cs
+│   │   │   │   ├── CreateActorDto.cs
+│   │   │   │   ├── DeleteActorDto.cs
+│   │   │   │   ├── GetActorDto.cs
+│   │   │   │   └── UpdateActorDto.cs
+│   │   │   ├── 📁 Dapper/
+│   │   │   │   ├── DasbhoardSummaryDto.cs
+│   │   │   │   ├── ShowSearchDto.cs
+│   │   │   │   └── ShowWithEpisodeCountDto.cs
+│   │   │   ├── 📁 Episodes/
+│   │   │   │   ├── CreateEpisodeDto.cs
+│   │   │   │   ├── DeleteEpisodeDto.cs
+│   │   │   │   ├── EpisodeDto.cs
+│   │   │   │   ├── GetEpisodeDto.cs
+│   │   │   │   └── UpdateEpisodeDto.cs
+│   │   │   ├── 📁 Genres/
+│   │   │   │   ├── CreateGenreDto.cs
+│   │   │   │   ├── DeleteGenreDto.cs
+│   │   │   │   ├── GenreDto.cs
+│   │   │   │   ├── GetGenreDto.cs
+│   │   │   │   └── UpdateGenreDto.cs
+│   │   │   └── 📁 Shows/
+│   │   │       ├── CreateShowDto.cs
+│   │   │       ├── DeleteShowDto.cs
+│   │   │       ├── GetShowDto.cs
+│   │   │       ├── SearchShowDto.cs
+│   │   │       ├── ShowDto.cs
+│   │   │       ├── ShowWithEpisodeCountDto.cs
+│   │   │       └── UpdateShowDto.cs
 │   │   ├── 📁 Entities/
-│   │   │   ├── Show.cs
-│   │   │   ├── Episode.cs
 │   │   │   ├── Actor.cs
+│   │   │   ├── Episode.cs
 │   │   │   ├── Genre.cs
+│   │   │   ├── Show.cs
 │   │   │   └── ShowActor.cs
-│   ├── ApiResponse.cs
+│   │   └── ApiResponse.cs
 │   └── MediaVault.Models.csproj
 
 📁 MediaVault.Repositories/
-│   ├── 📁 Repositories
-│   │   ├── 📁 Interfaces
-│   │   │   ├── IShowRepository.cs
-│   │   │   ├── IEpisodeRepository.cs
-│   │   │   ├── IActorRepository.cs
-│   │   │   └── IGenreRepository.cs
-│   │   ├── ShowRepository.cs
-│   │   ├── EpisodeRepository.cs
-│   │   ├── ActorRepository.cs
-│   │   └── GenreRepository.cs
-│   ├── 📁 Data
+│   ├── 📁 Data/
 │   │   └── AppDbContext.cs
-|   ├── 📁 Migrations
+│   ├── 📁 Migrations/
+│   │   ├── 20250728202408_InitialCreate.cs
+│   │   ├── 20250728202408_InitialCreate.Designer.cs
+│   │   ├── 20250731153029_ApplyQueryFilterFix.cs
+│   │   ├── 20250731153029_ApplyQueryFilterFix.Designer.cs
+│   │   ├── 20250731160350_AddForeignKeyConstraints.cs
+│   │   ├── 20250731160350_AddForeignKeyConstraints.Designer.cs
+│   │   ├── 20250731170603_AddShowGenreRelationship.cs
+│   │   ├── 20250731170603_AddShowGenreRelationship.Designer.cs
+│   │   └── AppDbContextModelSnapshot.cs
+│   ├── 📁 Repositories/
+│   │   ├── 📁 Interfaces/
+│   │   │   ├── IActorRepository.cs
+│   │   │   ├── IEpisodeRepository.cs
+│   │   │   ├── IGenreRepository.cs
+│   │   │   └── IShowRepository.cs
+│   │   ├── ActorRepository.cs
+│   │   ├── EpisodeRepository.cs
+│   │   ├── GenreRepository.cs
+│   │   └── ShowRepository.cs
 │   └── MediaVault.Repositories.csproj
 
 📁 MediaVault.Services/
-|   ├── 📁 Repositories
+│   ├── 📁 Dapper/
+│   │   ├── DapperDashboardService.cs
+│   │   └── DapperShowService.cs
+│   ├── 📁 Services/
 │   │   ├── 📁 Interfaces/
-│   │   │   ├── IShowService.cs
-│   │   │   ├── IEpisodeService.cs
 │   │   │   ├── IActorService.cs
-│   │   │   └── IGenreService.cs
-│   │   ├── ShowService.cs
-│   │   ├── EpisodeService.cs
+│   │   │   ├── IEpisodeService.cs
+│   │   │   ├── IGenreService.cs
+│   │   │   └── IShowService.cs
 │   │   ├── ActorService.cs
-│   │   └── GenreService.cs
+│   │   ├── EpisodeService.cs
+│   │   ├── GenreService.cs
+│   │   └── ShowService.cs
 │   └── MediaVault.Services.csproj
 
 📄 MediaVault_API.sln
 📄 README.md
 📄 PROJECT_STRUCTURE.txt
 📄 .gitignore
+
