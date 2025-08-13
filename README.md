@@ -71,3 +71,9 @@ cd MediaVault_API
 For a full structural breakdown of all folders and files pushed to GitHub, see:
 
 👉 PROJECT_STRUCTURE.txt
+
+### Dapper Services (Alternative Data Access)
+The [`MediaVault.Services/Dapper`](MediaVault.Services/Dapper) folder showcases lightweight data-access patterns using [Dapper](https://github.com/DapperLib/Dapper) instead of Entity Framework:
+
+- [`DapperDashboardService.cs`](MediaVault.Services/Dapper/DapperDashboardService.cs) – runs raw SQL to fetch dashboard metrics.
+- [`DapperShowService.cs`](MediaVault.Services/Dapper/DapperShowService.cs) – demonstrates flexible show queries without EF Core.
