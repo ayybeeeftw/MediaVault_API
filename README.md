@@ -70,7 +70,7 @@ cd MediaVault_API
 ## 📂 Project Structure
 For a full structural breakdown of all folders and files pushed to GitHub, see:
 
-👉 PROJECT_STRUCTURE.txt
+👉 [`PROJECT_STRUCTURE.txt`]
 
 ### Dapper Services (Alternative Data Access)
 The [`MediaVault.Services/Dapper`](MediaVault.Services/Dapper) folder showcases lightweight data-access patterns using [Dapper](https://github.com/DapperLib/Dapper) instead of Entity Framework:
